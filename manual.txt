@@ -1,0 +1,145 @@
+# Robin - Complete Laptop Control AI
+# Optimized for: Vosk (offline) + gTTS (fast online)
+# Install with: pip install -r requirements.txt
+
+# =============== CORE AI & API ===============
+openai>=1.3.0
+python-dotenv>=1.0.0
+certifi>=2024.0.0
+
+# =============== AUDIO & VOICE - PRIMARY STACK ===============
+# Vosk: Offline speech recognition (no internet needed)
+vosk>=0.3.45
+pocketsphinx>=0.1.15
+
+# Speech Recognition: Microphone input + Google fallback
+SpeechRecognition>=3.10.0
+pyaudio>=0.2.13
+
+# Audio playback: sounddevice is fastest
+sounddevice>=0.4.6
+soundfile>=0.12.1
+
+# TTS - Text to Speech (THREE OPTIONS)
+# Primary: gTTS (fast, reliable, no setup needed)
+gTTS>=2.3.1
+
+# Fallback: PyTTSx3 (offline, system voices, very fast)
+pyttsx3>=2.90
+
+# Optional: Edge TTS (neural voices, needs internet)
+edge-tts>=6.1.1
+
+# =============== AUTOMATION & SYSTEM CONTROL ===============
+pyautogui>=0.9.53
+pyperclip>=1.8.2
+psutil>=5.9.0
+
+# =============== SCREEN & IMAGE PROCESSING ===============
+Pillow>=10.0.0
+pytesseract>=0.3.10
+
+# =============== GUI ===============
+python-vlc>=3.0.0
+
+# =============== LANGUAGE DETECTION ===============
+langdetect>=1.0.9
+
+# =============== OPTIONAL: AUDIO CONVERSION ===============
+# For faster gTTS playback (convert MP3 to WAV)
+# Download from: https://ffmpeg.org/download.html
+# Then add to PATH or install via:
+# Windows: choco install ffmpeg
+# Ubuntu/Debian: sudo apt-get install ffmpeg
+# macOS: brew install ffmpeg
+
+# =============== INSTALLATION GUIDE ===============
+# 
+# STEP 1: Install Python 3.10+ from python.org
+#
+# STEP 2: Install dependencies
+#   pip install -r requirements.txt
+#
+# STEP 3: Install system dependencies
+#
+#   PYAUDIO (REQUIRED for microphone):
+#   Windows: pip install pipwin && pipwin install pyaudio
+#   Ubuntu/Debian: sudo apt-get install python3-pyaudio
+#   macOS: brew install portaudio && pip install pyaudio
+#
+#   TESSERACT OCR (OPTIONAL for screen reading):
+#   Windows: https://github.com/UB-Mannheim/tesseract/wiki
+#   Ubuntu/Debian: sudo apt-get install tesseract-ocr
+#   macOS: brew install tesseract
+#
+#   FFMPEG (OPTIONAL but RECOMMENDED for gTTS speed):
+#   Windows: https://ffmpeg.org/download.html (or choco install ffmpeg)
+#   Ubuntu/Debian: sudo apt-get install ffmpeg
+#   macOS: brew install ffmpeg
+#
+#   VLC MEDIA PLAYER (REQUIRED for animations):
+#   Windows: https://www.videolan.org/vlc/
+#   Ubuntu/Debian: sudo apt-get install vlc
+#   macOS: brew install vlc
+#
+# STEP 4: Download Vosk offline model (REQUIRED for offline voice)
+#   Download: vosk-model-en-us-0.22-lgraph
+#   From: https://alphacephei.com/vosk/models
+#   Extract to: robin/ folder (same directory as robin.py)
+#
+# STEP 5: Create config.py
+#   OPENAI_API_KEYS = ["sk-your-api-key-1", "sk-your-api-key-2"]
+#
+# STEP 6: Create images/emotions/ folder with MP4 files
+#   Directory structure:
+#   robin/
+#   ├── robin.py
+#   ├── config.py
+#   ├── requirements.txt
+#   ├── vosk-model-en-us-0.22-lgraph/
+#   └── images/
+#       └── emotions/
+#           ├── normal.mp4
+#           ├── happy.mp4
+#           ├── sad.mp4
+#           └── ...
+#
+# STEP 7: Run Robin
+#   python robin.py
+
+# =============== TROUBLESHOOTING ===============
+#
+# gTTS Taking Too Long?
+#   - Make sure ffmpeg is installed (speeds up MP3→WAV conversion)
+#   - Use .co.in TLD instead of .com for faster response
+#   - First load always takes longer (network latency)
+#   - Subsequent requests are cached and faster
+#
+# Vosk Not Working?
+#   - Verify model path: vosk-model-en-us-0.22-lgraph
+#   - Model should be in same folder as robin.py
+#   - Check microphone is working: test with Google Speech Recognition first
+#   - Vosk works offline but may be slower than online
+#
+# No Sound/Microphone?
+#   - Install pyaudio properly (see STEP 3)
+#   - Check microphone in Windows Sound Settings
+#   - Test microphone on another application first
+#
+# PyTTSx3 Issues?
+#   - On Windows, should use built-in voices automatically
+#   - On Linux/Mac, install espeak: apt-get install espeak
+#
+# Performance Issues?
+#   - Close other audio applications
+#   - Disable animations if CPU usage is high
+#   - Use PyTTSx3 instead of gTTS for offline mode
+#
+# =============== RECOMMENDED SETUP ===============
+#
+# For BEST performance with Vosk + gTTS:
+# ✓ Windows 10/11, Python 3.10+
+# ✓ ffmpeg installed (for fast audio conversion)
+# ✓ Good microphone (USB if possible)
+# ✓ Internet connection for gTTS (fallback to PyTTSx3 offline)
+# ✓ At least 4GB RAM for smooth operation
